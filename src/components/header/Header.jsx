@@ -19,7 +19,7 @@ const Header = () => {
   const [openOptions, setOpenOptions] = useState(false);
   const [options, setOptions] = useState({
     adult: 1,
-    children: 1,
+    children: 0,
     room: 1,
   });
   const [date, setDate] = useState([
@@ -109,6 +109,7 @@ const Header = () => {
                   <span className="optionText">Adult</span>
                   <div className="optionCounter">
                     <button
+                      disabled={options.adult <= 1}
                       onClick={() => handleOption("adult", "d")}
                       className="optionCounterBtn"
                     >
@@ -127,6 +128,7 @@ const Header = () => {
                   <span className="optionText">Children</span>
                   <div className="optionCounter">
                     <button
+                      disabled={options.children <= 0}
                       onClick={() => handleOption("children", "d")}
                       className="optionCounterBtn"
                     >
@@ -147,6 +149,7 @@ const Header = () => {
                   <span className="optionText">Room</span>
                   <div className="optionCounter">
                     <button
+                      disabled={options.room <= 1}
                       onClick={() => handleOption("room", "d")}
                       className="optionCounterBtn"
                     >

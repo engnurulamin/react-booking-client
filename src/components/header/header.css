@@ -113,3 +113,8 @@
   cursor: pointer;
   background: white;
 }
+
+.optionCounterBtn:disabled {
+  cursor: not-allowed;
+  border: 1px solid grey;
+}
