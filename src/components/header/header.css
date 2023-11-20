@@ -79,6 +79,7 @@
 .date {
   position: absolute;
   top: 50px;
+  z-index: 2;
 }
 
 .options {
@@ -87,6 +88,7 @@
   background: white;
   color: gray;
   border-radius: 3px;
+  z-index: 2;
   box-shadow: -2px 2px 7px -1px rgba(43, 41, 41, 0.76);
   -webkit-box-shadow: -2px 2px 7px -1px rgba(43, 41, 41, 0.76);
   -moz-box-shadow: -2px 2px 7px -1px rgba(43, 41, 41, 0.76);
