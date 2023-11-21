@@ -14,12 +14,13 @@
   background: #febb02;
   padding: 10px;
   border-radius: 10px;
+  top: 10px;
   position: sticky;
-  top: 10;
+  height: max-content;
 }
 .lsTitle {
   font-size: 20px;
-  color: #555;
+  color: #312f2f;
   margin-bottom: 10px;
 }
 .lsItem {
