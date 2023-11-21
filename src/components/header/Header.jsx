@@ -109,6 +109,7 @@ const Header = ({ type }) => {
                     onChange={(item) => setDate([item.selection])}
                     moveRangeOnFirstSelection={false}
                     ranges={date}
+                    minDate={new Date()}
                     className="date"
                   />
                 )}
