@@ -10,8 +10,11 @@ import {
   faCircleXmark,
   faLocationDot,
 } from "@fortawesome/free-solid-svg-icons";
+import { useState } from "react";
 
 const Hotel = () => {
+  const [slideNumber, setSlideNumber] = useState(0);
+  const [open, setOpen] = useState(false);
   let photos = [
     { src: "https://source.unsplash.com/VGs8z60yT2c" },
     { src: "https://source.unsplash.com/AH8zKXqFITA" },
@@ -20,12 +23,28 @@ const Hotel = () => {
     { src: "https://source.unsplash.com/KRRB1MJFVpI" },
     { src: "https://source.unsplash.com/sMh8FU25ZkE" },
   ];
+
+  const handleOpen = (i) => {
+    setSlideNumber(i);
+    setOpen(true);
+  };
+  const handleMove = (direction) => {
+    let newSlideNumber;
+
+    if (direction === "l") {
+      newSlideNumber = slideNumber === 0 ? 5 : slideNumber - 1;
+    } else {
+      newSlideNumber = slideNumber === 5 ? 0 : slideNumber + 1;
+    }
+
+    setSlideNumber(newSlideNumber);
+  };
   return (
     <div>
       <Navbar />
       <Header type="list" />
       <div className="hotelContainer">
-        {/* {open && (
+        {open && (
           <div className="slider">
             <FontAwesomeIcon
               icon={faCircleXmark}
@@ -46,7 +65,7 @@ const Hotel = () => {
               onClick={() => handleMove("r")}
             />
           </div>
-        )} */}
+        )}
         <div className="hotelWrapper">
           <button className="bookNow">Reserve or Book Now!</button>
           <h1 className="hotelTitle">Tower Street Apartments</h1>
@@ -64,7 +83,7 @@ const Hotel = () => {
             {photos.map((photo, i) => (
               <div className="hotelImgWrapper" key={i}>
                 <img
-                  // onClick={() => handleOpen(i)}
+                  onClick={() => handleOpen(i)}
                   src={photo.src}
                   alt=""
                   className="hotelImg"
