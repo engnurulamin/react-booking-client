@@ -2,6 +2,7 @@
   width: 100%;
   max-width: 1024px;
   font-size: 12px;
+  margin: 50px 0px 10px 0px;
 }
 
 .fLists {
@@ -9,6 +10,7 @@
   display: flex;
   justify-content: space-between;
   margin-bottom: 50px;
+  align-items: center;
 }
 .fList {
   list-style: none;
