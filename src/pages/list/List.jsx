@@ -1,4 +1,6 @@
 import "./list.css";
+import Footer from "../../components/footer/Footer";
+import MailList from "../../components/mail/MailList";
 import Header from "../../components/header/Header";
 import Navbar from "../../components/navbar/Navbar";
 import { useLocation } from "react-router-dom";
@@ -45,13 +47,13 @@ const List = () => {
               <div className="lsOptions">
                 <div className="lsOptionItem">
                   <span className="lsOptionText">
-                    Min price <small>per night</small>
+                    Min price <small>(per night)</small>
                   </span>
                   <input type="number" className="lsOptionInput" />
                 </div>
                 <div className="lsOptionItem">
                   <span className="lsOptionText">
-                    Max price <small>per night</small>
+                    Max price <small>(per night)</small>
                   </span>
                   <input type="number" className="lsOptionInput" />
                 </div>
@@ -90,6 +92,8 @@ const List = () => {
             <SearchItem />
           </div>
         </div>
+        <MailList />
+        <Footer />
       </div>
     </div>
   );
