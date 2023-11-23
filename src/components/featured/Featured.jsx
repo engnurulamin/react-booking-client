@@ -3,10 +3,9 @@ import "./featured.css";
 
 const Featured = () => {
   const apiUrl =
-    "http://localhost:8800/api/hotels/count-by-city?cities=Sylhet,Dhaka";
+    "http://localhost:8800/api/hotels/count-by-city?cities=Sylhet,Dhaka,CTG";
 
   const { data, loading, error, reFetch } = useFetch(apiUrl);
-  console.log(data);
   return (
     <div className="featured">
       {loading ? (
@@ -43,7 +42,7 @@ const Featured = () => {
             />
             <div className="featutrdTitles">
               <h1>Reno</h1>
-              <h1>533 properties</h1>
+              <h1>{data[2]} properties</h1>
             </div>
           </div>
         </>
