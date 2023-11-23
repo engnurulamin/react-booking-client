@@ -12,7 +12,6 @@ const PropertyList = () => {
     "https://source.unsplash.com/HjzL2rJyGW4",
     "https://source.unsplash.com/2keCPb73aQY",
   ];
-  console.log("mmm", data[0].type);
   return (
     <div className="pList">
       {loading ? (
@@ -21,13 +20,11 @@ const PropertyList = () => {
         <>
           {data &&
             images.map((img, i) => (
-              <div className="pListItem">
+              <div className="pListItem" key={i}>
                 <img className="pListImg" src={img} alt="" />
                 <div className="pListTitle">
-                  <h1>{data[i].type.toUpperCase()}</h1>
-                  <h2>
-                    {data[i].count} {data[i].type}
-                  </h2>
+                  <h1>{data[i].type}</h1>
+                  {data[i]?.count} {data[i]?.type}
                 </div>
               </div>
             ))}
