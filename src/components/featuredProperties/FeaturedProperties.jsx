@@ -1,50 +1,39 @@
+import useFetch from "../../hooks/useFetch";
 import "./featuredProperties.css";
 
 const FeaturedProperties = () => {
+  const apiUrl =
+    "http://localhost:8800/api/hotels?featured=true&min=1000&max=5000&limit=3";
+  const { data, loading, error, reFetch } = useFetch(apiUrl);
+  console.log(data);
   return (
     <div className="fp">
-      <div className="fpItem">
-        <img
-          src="https://source.unsplash.com/rlwE8f8anOc"
-          alt=""
-          className="fpImg"
-        />
-        <span className="fpName"> Apart Hotel</span>
-        <span className="fpCity"> Sylhet</span>
-        <span className="fpPrice">Starting from 2000 TK</span>
-        <div className="fpRating">
-          <button>8.9</button>
-          <span>Execllent</span>
-        </div>
-      </div>
-      <div className="fpItem">
-        <img
-          src="https://source.unsplash.com/_twiIcIsp2s"
-          alt=""
-          className="fpImg"
-        />
-        <span className="fpName"> Apart Hotel</span>
-        <span className="fpCity"> Sylhet</span>
-        <span className="fpPrice">Starting from 2000 TK</span>
-        <div className="fpRating">
-          <button>8.9</button>
-          <span>Execllent</span>
-        </div>
-      </div>
-      <div className="fpItem">
-        <img
-          src="https://source.unsplash.com/2gOxKj594nM"
-          alt=""
-          className="fpImg"
-        />
-        <span className="fpName"> Apart Hotel</span>
-        <span className="fpCity"> Sylhet</span>
-        <span className="fpPrice">Starting from 2000 TK</span>
-        <div className="fpRating">
-          <button>8.9</button>
-          <span>Execllent</span>
-        </div>
-      </div>
+      {loading ? (
+        "Loading"
+      ) : (
+        <>
+          {data.map((hotel) => (
+            <div className="fpItem" key={hotel._id}>
+              <img
+                src="https://source.unsplash.com/rlwE8f8anOc"
+                alt=""
+                className="fpImg"
+              />
+              <span className="fpName"> {hotel.name}</span>
+              <span className="fpCity"> {hotel.city}</span>
+              <span className="fpPrice">
+                Starting from {hotel.cheapestPrice} TK
+              </span>
+              {hotel.rating && (
+                <div className="fpRating">
+                  <button>{hotel.rating}</button>
+                  <span>Execllent</span>
+                </div>
+              )}
+            </div>
+          ))}
+        </>
+      )}
     </div>
   );
 };
