@@ -14,6 +14,7 @@ const FeaturedProperties = () => {
         <>
           {data.map((hotel) => (
             <div className="fpItem" key={hotel._id}>
+              {/* <img src={hotelphotos[0]} alt="" /> */}
               <img
                 src="https://source.unsplash.com/rlwE8f8anOc"
                 alt=""
