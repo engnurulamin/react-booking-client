@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import "./searchItem.css";
 
 const SearchItem = ({ item }) => {
+  console.log(item._id);
   return (
     <>
       <div className="searchItem">
@@ -33,7 +34,7 @@ const SearchItem = ({ item }) => {
           <div className="detailText">
             <span className="price">{item.cheapestPrice}TK</span>
             <span className="textOp">Includes taxes And fees</span>
-            <Link to={`http://localhost:8800/api/hotels/${item._id}`}>
+            <Link to={`/hotels/${item._id}`}>
               <button className="checkBtn">See Avialability</button>
             </Link>
           </div>
