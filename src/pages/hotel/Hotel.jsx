@@ -10,9 +10,10 @@ import {
   faCircleXmark,
   faLocationDot,
 } from "@fortawesome/free-solid-svg-icons";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import useFetch from "../../hooks/useFetch";
 import { useLocation } from "react-router-dom";
+import { SearchContext } from "../../context/SearchContext";
 
 const Hotel = () => {
   const location = useLocation();
@@ -20,16 +21,9 @@ const Hotel = () => {
   const [slideNumber, setSlideNumber] = useState(0);
   const [open, setOpen] = useState(false);
   const apiUrl = `http://localhost:8800/api/hotels/find/${id}`;
-  // const apiUrl = `http://localhost:8800/api/hotels/find/6554f70d675374d2fbebc001`;
   const { data, loading, error, reFetch } = useFetch(apiUrl);
-  // let photos = [
-  //   { src: "https://source.unsplash.com/VGs8z60yT2c" },
-  //   { src: "https://source.unsplash.com/AH8zKXqFITA" },
-  //   { src: "https://source.unsplash.com/aRT5UCf2MYY" },
-  //   { src: "https://source.unsplash.com/xc4oxgAbDmw" },
-  //   { src: "https://source.unsplash.com/KRRB1MJFVpI" },
-  //   { src: "https://source.unsplash.com/sMh8FU25ZkE" },
-  // ];
+  // const { dates } = useContext(SearchContext);
+  // console.log(dates);
 
   const handleOpen = (i) => {
     setSlideNumber(i);
