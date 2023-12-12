@@ -1,4 +1,5 @@
-import React, { createContext, useReducer } from "react";
+import { useReducer } from "react";
+import { createContext } from "react";
 
 const INITIAL_STATE = {
   city: undefined,
@@ -10,7 +11,7 @@ const INITIAL_STATE = {
   },
 };
 
-const SearchContext = createContext(INITIAL_STATE);
+export const SearchContext = createContext(INITIAL_STATE);
 
 const SearchReducer = (state, action) => {
   switch (action.type) {
@@ -23,7 +24,7 @@ const SearchReducer = (state, action) => {
   }
 };
 
-const SearchContextProvider = ({ children }) => {
+export const SearchContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(SearchReducer, INITIAL_STATE);
   return (
     <SearchContext.Provider
@@ -38,5 +39,3 @@ const SearchContextProvider = ({ children }) => {
     </SearchContext.Provider>
   );
 };
-
-export default { SearchContextProvider, SearchContext };
