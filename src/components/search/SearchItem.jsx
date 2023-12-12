@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import "./searchItem.css";
 
 const SearchItem = ({ item }) => {
-  console.log(item._id);
   return (
     <>
       <div className="searchItem">
