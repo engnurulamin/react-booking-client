@@ -5,7 +5,6 @@ const FeaturedProperties = () => {
   const apiUrl =
     "http://localhost:8800/api/hotels?featured=true&min=1000&max=5000&limit=3";
   const { data, loading, error, reFetch } = useFetch(apiUrl);
-  console.log(data);
   return (
     <div className="fp">
       {loading ? (

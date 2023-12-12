@@ -12,12 +12,14 @@ import useFetch from "../../hooks/useFetch";
 
 const List = () => {
   const location = useLocation();
+  console.log(location.state.dates);
   const [destination, setDestination] = useState(location.state.destination);
   const [openDate, setOpenDate] = useState(false);
-  const [date, setDate] = useState(location.state.date);
+  const [dates, setDates] = useState(location.state.dates);
   const [options, setOptions] = useState(location.state.options);
   const [min, setMin] = useState(undefined);
   const [max, setMax] = useState(undefined);
+  console.log(dates);
 
   const apiUrl = `http://localhost:8800/api/hotels?city=${destination}&min=${
     min || 2000
@@ -42,13 +44,13 @@ const List = () => {
             <div className="lsItem">
               <label>Check-in Date</label>
               <span onClick={() => setOpenDate(!openDate)}>{`${format(
-                date[0].startDate,
+                dates[0].startDate,
                 "dd/MM/yyyy"
-              )} to ${format(date[0].endDate, "dd/MM/yyyy")} `}</span>
+              )} to ${format(dates[0].endDate, "dd/MM/yyyy")} `}</span>
               {openDate && (
                 <DateRange
-                  onChange={(item) => setDate([item.selection])}
-                  ranges={date}
+                  onChange={(item) => setDates([item.selection])}
+                  ranges={dates}
                   minDate={new Date()}
                 />
               )}
