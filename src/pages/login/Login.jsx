@@ -9,10 +9,8 @@ const Login = () => {
     username: "",
     password: "",
   });
-  console.log("credentials", credentials);
 
   const { user, loading, error, dispatch } = useContext(AuthContext);
-  console.log("Error:", error);
 
   const navigate = useNavigate();
 
@@ -32,7 +30,6 @@ const Login = () => {
       dispatch({ type: "LOGIN_SUCCESS", payload: res.data });
       navigate("/");
     } catch (err) {
-      console.error("Login error:", err);
       console.error("Status code:", err.response?.status);
       dispatch({ type: "LOGIN_FAIL", payload: err.response?.data });
     }
