@@ -15,6 +15,7 @@ import { useContext, useState } from "react";
 import useFetch from "../../hooks/useFetch";
 import { useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
+import Reserve from "../../components/reserve/Reserve";
 
 const Hotel = () => {
   const location = useLocation();
@@ -32,11 +33,11 @@ const Hotel = () => {
   const DAY_IN_MSEC = 1000 * 60 * 60 * 24;
 
   function dayDiffrence(date1, date2) {
-    const timeDiff = Math.abs(date2.getTime() - date1.getTime());
+    const timeDiff = Math.abs(date2?.getTime() - date1?.getTime());
     const diffDays = Math.ceil(timeDiff / DAY_IN_MSEC);
     return diffDays;
   }
-  const days = dayDiffrence(dates[0].endDate, dates[0].startDate);
+  const days = dayDiffrence(dates[0]?.endDate, dates[0]?.startDate);
 
   const handleOpen = (i) => {
     setSlideNumber(i);
@@ -135,11 +136,11 @@ const Hotel = () => {
               </div>
             </div>
           </div>
+          <Reserve hotelId={id} />
           <MailList />
           <Footer />
         </div>
       )}
-      {openModal && "Modal"}
     </div>
   );
 };
