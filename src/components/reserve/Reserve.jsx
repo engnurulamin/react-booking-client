@@ -4,6 +4,8 @@ import { faCircleXmark } from "@fortawesome/free-regular-svg-icons";
 import useFetch from "../../hooks/useFetch";
 import { useContext, useState } from "react";
 import { SearchContext } from "../../context/SearchContext";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const Reserve = ({ setOpen, hotelId }) => {
   const [selectedRooms, setSelectedRooms] = useState([]);
@@ -42,9 +44,21 @@ const Reserve = ({ setOpen, hotelId }) => {
 
     return !isFound;
   };
-
-  const handleClick = () => {
-    console.log("first");
+  const navigate = useNavigate();
+  const handleClick = async () => {
+    try {
+      await Promise.all(
+        selectedRooms.map((roomId) => {
+          const apiUrl = `http://localhost:8800/api/rooms/availability/${roomId}`;
+          const res = axios.put(apiUrl, { dates: alldates });
+          return res.data;
+        })
+      );
+      setOpen(false);
+      navigate("/");
+    } catch (error) {
+      console.error(error);
+    }
   };
   return (
     <div className="reserve">
