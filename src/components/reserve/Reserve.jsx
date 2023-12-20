@@ -72,20 +72,20 @@ const Reserve = ({ setOpen, hotelId }) => {
         {data.map((item) => (
           <div className="re-item">
             <div className="re-item-info">
-              <div className="re-title">{item.title}</div>
-              <div className="re-desc">{item.desc}</div>
+              <div className="re-title">{item?.title}</div>
+              <div className="re-desc">{item?.desc}</div>
               <div className="re-max">
-                Max People <b>{item.maxPeople}</b>
+                Max People <b>{item?.maxPeople}</b>
               </div>
-              <div className="re-price">{item.price}</div>
+              <div className="re-price">{item?.price}</div>
             </div>
             <div className="re-select-room">
-              {item.roomNumbers.map((roomNumber) => (
-                <div className="room" key={roomNumber._id}>
-                  <label>{roomNumber.number}</label>
+              {item?.roomNumbers?.map((roomNumber) => (
+                <div className="room" key={roomNumber?._id}>
+                  <label>{roomNumber?.number}</label>
                   <input
                     type="checkbox"
-                    value={roomNumber._id}
+                    value={roomNumber?._id}
                     onChange={handleSelect}
                     disabled={!isAvailable(roomNumber)}
                   />
