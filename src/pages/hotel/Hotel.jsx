@@ -123,14 +123,16 @@ const Hotel = () => {
                 <p className="hotelDesc">{data.desc}</p>
               </div>
               <div className="hotelDetailsPrice">
-                <h1>Perfect for a {days} night stay!</h1>
+                <h1>Perfect for a {days ? days : 0} night stay!</h1>
                 <span>
                   Located in the real heart of Krakow, this property has an
                   excellent location score of 9.8!
                 </span>
                 <h2>
-                  <b>{days * data.cheapestPrice * options.room}TK</b> ({days}{" "}
-                  nights)
+                  <b>
+                    {days ? days * data.cheapestPrice * options.room : 0.0}TK
+                  </b>{" "}
+                  ({days ? days : 0} nights)
                 </h2>
                 <button onClick={handleClick}>Reserve or Book Now!</button>
               </div>
